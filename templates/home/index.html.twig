@@ -3,17 +3,22 @@
 {% block title %}Symfony Blog{% endblock %}
 
 {% block body %}
-<div>
-    {% for post in posts %}
-        <a href="/post/{{post.id}}"><h1>{{ post.title }}</h1></a>
-        <p>{{ post.body }}</p>
-        <p>Username: {{ post.userId.username }}</p>
-        <h4>Comments</h4>
-        {% for comment in comments %}
-            {% if comment.postId.id == post.id %}
-                <p>{{post.userId.username}} said: {{ comment.body }}</p>
-            {% endif %}
+<div class="flex flex-col items-center">
+    <div class="max-w-md">
+        {% for post in posts %}
+        <div class="py-8 border-b-2 border-grey-lighter">
+            <div class="flex items-center justify-between">
+                <a href="/post/{{post.id}}" class="text-2xl no-underline font-semibold text-blue-darker">
+                    {{ post.title }}
+                </a>
+            </div>
+            <div class="leading-normal mt-4 text-blue-darker">
+                {{ post.body }}
+            </div>
+
+            <div class="text-grey-darker mt-4 text-sm">{{ post.userId.username }}</div>
+        </div>
         {% endfor %}
-    {% endfor %}
+    </div>
 </div>
 {% endblock %}

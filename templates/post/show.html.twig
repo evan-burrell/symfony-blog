@@ -1,25 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Post{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
 
 {% block body %}
-<h1>{{ post.title }}</h1>
-<p>{{ post.body }}</p>
+<div class="text-blue-darker text-3xl">{{ post.title }}</div>
+<div class="py-16">{{ post.body }}</div>
 
-<h4>Comments</h4>
+<div class="font-semibold">Comments</div>
 {% for comment in post.comments %}
-    <p>{{ comment.userId.username }} said {{ comment.body }}</p>
+<div class="py-4">
+    <div class="italic inline">{{ comment.userId.username }} </div> said: "{{ comment.body }}"
     {% if app.user %}
-        {% if app.user.username == comment.userId.username %}
-        <a href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
-        {% endif %}
+    {% if app.user.username == comment.userId.username %}
+    <a href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
     {% endif %}
-{% endfor %}
+    {% endif %}
+    {% endfor %}
+</div>
 
-{% if app.user %}
-<a href="{{ path('comment_new', {'id': post.id}) }}">Add comment</a>
-<a href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
-{{ include('post/_delete_form.html.twig') }}
-{% endif %}
+
+<div class="flex mt-4 items-center">
+    {% if app.user %}
+    <a class="-ml-2 mr-4 no-underline rounded p-2 text-grey-darkest" href="{{ path('comment_new', {'id': post.id}) }}">Add comment</a>
+    <a class="mr-4 no-underline border-2 rounded p-2 text-blue-darkest" href="{{ path('post_edit', {'id': post.id}) }}">Edit post</a>
+    <div class="mr-4 no-underline">{{ include('post/_delete_form.html.twig') }}</div>
+    {% endif %}
+</div>
 
 {% endblock %}

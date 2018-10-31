@@ -3,25 +3,43 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/build/css/app.css">
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
 </head>
 
-<body>
-    <nav>
+<body class="body-background border-blue-darker border-t-8">
+    <div id="nav" class="py-8 text-blue-darker">
         {% if app.user %}
-        <a href="/">Home</a>
-        <a href="/post/new">Create Post</a>
-        <a href="/logout">Logout</a>
-        {{ app.user.username }}
+        <div class="flex px-8 justify-between">
+            <div class="flex">
+                <a class="no-underline text-blue-darker" href="/">Home</a>
+            </div>
+
+            <div class="flex">
+                Welcome, {{ app.user.username }}
+                <a class="no-underline text-blue-darker ml-4" href="/post/new">Create Post</a>
+                <a class="no-underline text-blue-darker ml-4" href="/logout">Logout</a>
+            </div>
+        </div>
+
+
         {% else %}
-        <a href="/">Home</a>
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
+        <div class="flex px-8 justify-between">
+            <div class="">
+                <a class="no-underline text-blue-darker" href="/">Home</a>
+            </div>
+            <div>
+                <a class="no-underline text-blue-darker ml-4" href="/login">Login</a>
+                <a class="no-underline text-blue-darker ml-4" href="/register">Register</a>
+            </div>
+        </div>
         {% endif %}
-    </nav>
-    {% block body %}{% endblock %}
-    {% block javascripts %}{% endblock %}
+    </div id="nav">
+    <div id="body" class="container mx-auto">
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </div>
 </body>
 
 </html>

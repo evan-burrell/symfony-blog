@@ -45,7 +45,7 @@ class CommentController extends AbstractController
             $em->persist($formData);
             $em->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('post_show', ['id' => $comment->getPostId()->getId()]);
         }
 
         return $this->render('comment/new.html.twig', [
@@ -73,7 +73,7 @@ class CommentController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('home', ['id' => $comment->getId()]);
+            return $this->redirectToRoute('post_show', ['id' => $comment->getPostId()->getId()]);
         }
 
         return $this->render('comment/edit.html.twig', [
@@ -93,6 +93,6 @@ class CommentController extends AbstractController
             $em->flush();
         }
 
-        return $this->redirectToRoute('comment_index');
+        return $this->redirectToRoute('post_show', ['id' => $comment->getPostId()->getId()]);
     }
 }

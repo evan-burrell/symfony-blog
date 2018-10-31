@@ -15,6 +15,9 @@ class HomeController extends AbstractController
     /** @var \Doctrine\Common\Persistence\ObjectRepository */
     private $postRepository;
 
+    /** @var \Doctrine\Common\Persistence\ObjectRepository */
+    private $commentsRepository;
+
     /**
      * @param EntityManagerInterface $entityManager
      */
@@ -22,6 +25,7 @@ class HomeController extends AbstractController
     {
         $this->entityManager = $entityManager;
         $this->postRepository = $entityManager->getRepository('App:Post');
+        $this->commentsRepository = $entityManager->getRepository('App:Comment');
     }
 
     /**
@@ -30,7 +34,8 @@ class HomeController extends AbstractController
     public function index()
     {
         return $this->render('home/index.html.twig', [
-            'posts' => $this->postRepository->findAll()
+            'posts' => $this->postRepository->findAll(),
+            'comments' => $this->commentsRepository->findAll()
         ]);
     }
 }

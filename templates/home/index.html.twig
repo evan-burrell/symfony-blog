@@ -6,7 +6,7 @@
 <nav>
     {% if app.user %}
     {{ app.user.username }}
-    <a href="/posts">Create Post</a>
+    <a href="/post/new">Create Post</a>
     <a href="/logout">Logout</a>
     {% else %}
     <a href="/login">Login</a>
@@ -15,15 +15,16 @@
 </nav>
 
 <div>
-        {% for post in posts %}
+    {% for post in posts %}
         <h1>{{ post.title }}</h1>
         <p>{{ post.body }}</p>
         <p>Username: {{ post.userId.username }}</p>
         <h4>Comments</h4>
         {% for comment in comments %}
-
-        <p>{{post.userId.username}} said: {{ comment.body }}</p>
+            {% if comment.postId.id == post.id %}
+                <p>{{post.userId.username}} said: {{ comment.body }}</p>
+            {% endif %}
         {% endfor %}
-        {% endfor %}
+    {% endfor %}
 </div>
 {% endblock %}

@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+
+<body>
+    <nav>
+        {% if app.user %}
+        <a href="/">Home</a>
+        <a href="/post/new">Create Post</a>
+        <a href="/logout">Logout</a>
+        {{ app.user.username }}
+        {% else %}
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        {% endif %}
+    </nav>
+    {% block body %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+</body>
+
 </html>

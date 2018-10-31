@@ -55,6 +55,13 @@ class Comment
         return $this->postId;
     }
 
+    public function setPostIdByString(String $postId) : self
+    {
+        $this->postId = $postId;
+
+        return $this;
+    }
+
     public function setPostId(?Post $postId): self
     {
         $this->postId = $postId;

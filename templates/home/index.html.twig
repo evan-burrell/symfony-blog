@@ -1,22 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Welcome!{% endblock %}
+{% block title %}Symfony Blog{% endblock %}
 
 {% block body %}
-<nav>
-    {% if app.user %}
-    {{ app.user.username }}
-    <a href="/post/new">Create Post</a>
-    <a href="/logout">Logout</a>
-    {% else %}
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
-    {% endif %}
-</nav>
-
 <div>
     {% for post in posts %}
-        <h1>{{ post.title }}</h1>
+        <a href="/post/{{post.id}}"><h1>{{ post.title }}</h1></a>
         <p>{{ post.body }}</p>
         <p>Username: {{ post.userId.username }}</p>
         <h4>Comments</h4>

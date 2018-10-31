@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Comment{% endblock %}
+
+{% block body %}
+    {{ include('comment/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('comment/_delete_form.html.twig') }}
+{% endblock %}

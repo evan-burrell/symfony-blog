@@ -4,7 +4,9 @@
 
 {% block body %}
 <div class="text-blue-darker text-3xl">{{ post.title }}</div>
-<div class="py-16">{{ post.body }}</div>
+<div class="text-xs text-grey-darker mt-4">{{ post.userId.username }}</div>
+<div class="py-16 leading-normal justify">{{ post.body }}</div>
+
 
 <div class="font-semibold">Comments</div>
 {% for comment in post.comments %}

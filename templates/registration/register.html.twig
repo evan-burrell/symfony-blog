@@ -1,9 +1,20 @@
-{# templates/registration/register.html.twig #}
+{% extends 'base.html.twig' %}
 
-{{ form_start(form) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.password.first) }}
-    {{ form_row(form.password.second) }}
+{% block title %}Register{% endblock %}
 
-    <button type="submit">Register!</button>
-{{ form_end(form) }}
+{% block body %}
+<div class="flex flex-col items-center">
+    <div class="bg-grey-lightest rounded p-8">
+        <h1 class="py-4 text-blue-darkest">Register</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.password.first) }}
+        {{ form_row(form.password.second) }}
+
+        <button class="mr-4 mt-2 no-underline border-2 rounded p-2 text-blue-darkest" type="submit">
+            Register
+        </button>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

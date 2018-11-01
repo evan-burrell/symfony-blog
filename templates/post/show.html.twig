@@ -15,7 +15,7 @@
     <div class="italic inline mr-2">{{ comment.userId.username }} </div> said: "{{ comment.body }}"
     {% if app.user %}
     {% if app.user.username == comment.userId.username %}
-    <a class="ml-4" href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
+    <a class="ml-4 no-underline text-grey-dark italic" href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
     {% endif %}
     {% endif %}
 </div>

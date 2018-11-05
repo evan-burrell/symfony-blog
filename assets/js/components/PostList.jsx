@@ -30,12 +30,19 @@ export default class PostList extends React.Component {
   }
 
   render() {
-    return ( this.state.posts ? (
+    return this.state.posts ? (
       this.state.posts.map((post, i) => (
-          <Post key={i} id={post[0].id} title={post[0].title} email={post.email} />
+        <Post
+          key={i}
+          id={post[0].id}
+          title={post[0].title}
+          email={post.email}
+        />
       ))
     ) : (
-      <div><Loading /></div>
-    ));
+      <div>
+        <Loading />
+      </div>
+    );
   }
 }

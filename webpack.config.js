@@ -6,6 +6,7 @@ Encore
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
+    .enableReactPreset()
 
     .addEntry('js/app', './assets/js/app.js') // your js entry file
     .addStyleEntry('css/app', './assets/css/app.css') // your less/scss entry file

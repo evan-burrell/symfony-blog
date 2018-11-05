@@ -8,7 +8,18 @@
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
 
-// Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-// var $ = require('jquery');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import AuthNavbar from './components/AuthNavbar';
+import NoAuthNavbar from './components/NoAuthNavbar';
+import PostList from './components/PostList';
+import 'babel-polyfill';
 
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+const userData = document.getElementById('auth-navbar');
+if (userData) {
+  ReactDOM.render(<AuthNavbar {...userData.dataset} />, userData);
+} else {
+  ReactDOM.render(<NoAuthNavbar />, document.getElementById('no-auth-navbar'));
+}
+
+ReactDOM.render(<PostList />, document.getElementById('post-list'));

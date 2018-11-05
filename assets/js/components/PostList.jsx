@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Post from './Post';
+import Loading from 'react-simple-loading';
 
 export default class PostList extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ export default class PostList extends React.Component {
           <Post key={i} id={post[0].id} title={post[0].title} email={post.email} />
       ))
     ) : (
-      <div>Loading...</div>
+      <div><Loading /></div>
     ));
   }
 }

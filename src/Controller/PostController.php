@@ -27,8 +27,8 @@ class PostController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $formData = $form->getData();
-            $formData->setUserId($this->getUser());
+            $formData = $form->getData()->setUserId($this->getUser());
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($formData);
             $entityManager->flush();

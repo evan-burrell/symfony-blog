@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use Doctrine\ORM\Query;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,13 +16,7 @@ class JsonApiController extends AbstractController
      */
     public function api()
     {
-        $query = $this->getDoctrine()
-            ->getRepository('App:Post')
-            ->createQueryBuilder('p')
-            ->join('p.userId', 'u')
-            ->addSelect('p', 'u.email')
-            ->getQuery()
-            ->getResult(Query::HYDRATE_ARRAY);
+        $query = $this->getDoctrine()->getRepository('App:Post')->getPostsWithEmail();
         return new JsonResponse($query);
     }
 }

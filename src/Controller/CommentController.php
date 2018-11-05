@@ -37,11 +37,10 @@ class CommentController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $formData = $form->getData();
             $postId = $request->query->get('id');
-            $query = $em->createQuery('SELECT post FROM App\Entity\Post post WHERE post.id = ' . $postId);
-            $post = $query->getResult();
+            $post = $this->getDoctrine()->getRepository('App:Post')->findOneBy(array('id' => $postId));
             $user = $this->getUser();
             $formData->setUserId($user);
-            $formData->setPostId($post[0]);
+            $formData->setPostId($post);
             $em->persist($formData);
             $em->flush();
 

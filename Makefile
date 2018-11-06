@@ -14,3 +14,7 @@ osx-link:
 	@echo "\033[92mBuild and link dependencies\033[0m";
 	brew bundle -vvv
 	brew link --force --overwrite $(shell grep -Eo 'amp-php.{0,4}' Brewfile | head -1) | head -1
+
+test:
+	vendor/bin/phpunit
+	npx jest

@@ -73,8 +73,7 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ],
-        "test": "phpunit && npx jest"
+        ]
     },
     "conflict": {
         "symfony/symfony": "*"

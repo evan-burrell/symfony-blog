@@ -22,6 +22,8 @@ class PostController extends AbstractController
      */
     public function new(Request $request) : Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $post = new Post();
         $form = $this->createForm(PostType::class, $post);
 
@@ -55,6 +57,8 @@ class PostController extends AbstractController
      */
     public function edit(Request $request, Post $post) : Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
 
@@ -75,6 +79,8 @@ class PostController extends AbstractController
      */
     public function delete(Request $request, Post $post) : Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         if ($this->isCsrfTokenValid('delete' . $post->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($post);

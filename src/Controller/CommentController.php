@@ -17,18 +17,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CommentController extends AbstractController
 {
     /**
-     * @Route("/", name="comment_index", methods="GET")
-     */
-    public function index(CommentRepository $commentRepository) : Response
-    {
-        return $this->render('comment/index.html.twig', ['comments' => $commentRepository->findAll()]);
-    }
-
-    /**
      * @Route("/new", name="comment_new", methods="GET|POST")
      */
     public function new(Request $request) : Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
@@ -63,6 +57,8 @@ class CommentController extends AbstractController
      */
     public function edit(Request $request, Comment $comment) : Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
@@ -83,6 +79,8 @@ class CommentController extends AbstractController
      */
     public function delete(Request $request, Comment $comment) : Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($comment);

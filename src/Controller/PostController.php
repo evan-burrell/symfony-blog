@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Carbon\Carbon;
 use App\Entity\Post;
 use App\Form\PostType;
 use Cocur\Slugify\Slugify;
@@ -28,13 +29,15 @@ class PostController extends AbstractController
         $post = new Post();
         $slugify = new Slugify();
         $form = $this->createForm(PostType::class, $post);
+        $date = Carbon::parse(Carbon::now());
+
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form
                 ->getData()
                 ->setUserId($this->getUser())
-                ->setSlug($slugify->slugify($form->getData()->getTitle()));
+                ->setSlug($slugify->slugify($form->getData()->getTitle() . '-' . $date->isoFormat('SSS')));
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($formData);
@@ -70,7 +73,7 @@ class PostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
+            return $this->redirectToRoute('post_show', ['slug' => $post->getSlug()]);
         }
 
         return $this->render('post/edit.html.twig', [

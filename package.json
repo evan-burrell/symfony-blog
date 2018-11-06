@@ -2,10 +2,16 @@
     "devDependencies": {
         "@symfony/webpack-encore": "^0.20.1",
         "autoprefixer": "^9.3.1",
+        "babel-core": "^6.26.3",
+        "babel-jest": "^23.6.0",
         "babel-preset-react": "^6.24.1",
+        "enzyme": "^3.7.0",
+        "enzyme-adapter-react-16": "^1.6.0",
+        "jest": "^23.6.0",
         "less": "^3.8.1",
         "less-loader": "^4.1.0",
         "postcss-loader": "^3.0.0",
+        "regenerator-runtime": "^0.12.1",
         "tailwindcss": "^0.6.6",
         "webpack-notifier": "^1.6.0"
     },
@@ -23,5 +29,8 @@
         "react": "16.7.0-alpha.0",
         "react-dom": "16.7.0-alpha.0",
         "react-simple-loading": "^0.0.3"
-    }
+    },
+    "jest": {
+        "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js"
+      }
 }

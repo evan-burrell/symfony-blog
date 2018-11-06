@@ -39,6 +39,11 @@ class PostController extends AbstractController
                 ->setUserId($this->getUser())
                 ->setSlug($slugify->slugify($form->getData()->getTitle() . '-' . $date->isoFormat('SSS')));
 
+            $this->addFlash(
+                'notice',
+                'Post created'
+            );
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($formData);
             $entityManager->flush();

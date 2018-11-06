@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Posts(props){
     return(
-        <div className="py-8 border-b-2 border-grey-lighter">
+        <div className="group hover:bg-white hover:shadow-inner py-8 px-4 border-b-2 border-grey-lighter">
             <div className="flex items-center justify-between">
                 <a href={'/post/' + props.slug } className="text-2xl no-underline font-semibold text-blue-darker">
                     { props.title }

@@ -5,17 +5,17 @@ export default function AuthNavbar(props) {
   return (
     <div className="flex px-8 justify-between">
       <div className="flex">
-        <a className="no-underline text-blue-darker" href="/">
+        <a className="no-underline text-blue-darker hover:underline" href="/">
           Home
         </a>
       </div>
 
       <div className="flex">
         Welcome, {props.username}
-        <a className="no-underline text-blue-darker ml-4" href="/post/new">
+        <a className="no-underline text-blue-darker ml-4 hover:underline" href="/post/new">
           Create Post
         </a>
-        <a className="no-underline text-blue-darker ml-4" href="/logout">
+        <a className="no-underline text-blue-darker ml-4 hover:underline" href="/logout">
           Logout
         </a>
       </div>

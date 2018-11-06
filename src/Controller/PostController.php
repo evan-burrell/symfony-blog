@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Post;
 use App\Form\PostType;
+use Cocur\Slugify\Slugify;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,11 +26,15 @@ class PostController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         $post = new Post();
+        $slugify = new Slugify();
         $form = $this->createForm(PostType::class, $post);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $formData = $form->getData()->setUserId($this->getUser());
+            $formData = $form
+                ->getData()
+                ->setUserId($this->getUser())
+                ->setSlug($slugify->slugify($form->getData()->getTitle()));
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($formData);
@@ -45,7 +50,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="post_show", methods="GET")
+     * @Route("/{slug}", name="post_show", methods="GET")
      */
     public function show(Post $post) : Response
     {

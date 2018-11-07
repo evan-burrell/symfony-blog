@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Home from './Home';
-import Unauthenticated from './Unauthenticated';
-import Authenticated from './Authenticated'
+import Home from './navbarPartials/Home';
+import Unauthenticated from './navbarPartials/Unauthenticated';
+import Authenticated from './navbarPartials/Authenticated'
 
 function Wrapper(props) {
   return <div className="flex px-8 justify-between">{props.children}</div>;

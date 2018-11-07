@@ -10,16 +10,15 @@ require('../css/app.css');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AuthNavbar from './components/AuthNavbar';
-import NoAuthNavbar from './components/NoAuthNavbar';
 import PostList from './components/PostList';
+import Navbar from './components/Navbar';
 import 'babel-polyfill';
 
 const userData = document.getElementById('auth-navbar');
 if (userData) {
-  ReactDOM.render(<AuthNavbar {...userData.dataset} />, userData);
+  ReactDOM.render(<Navbar {...userData.dataset} />, userData);
 } else {
-  ReactDOM.render(<NoAuthNavbar />, document.getElementById('no-auth-navbar'));
+  ReactDOM.render(<Navbar />, document.getElementById('no-auth-navbar'));
 }
 
 ReactDOM.render(<PostList />, document.getElementById('post-list'));

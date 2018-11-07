@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Posts(props) {
-  const { slug, title, username } = props;
-
+export default function Posts({ slug, title, username }) {
   return (
     <div className="group hover:bg-white hover:shadow-inner py-8 px-4 border-b-2 border-grey-lighter">
       <div className="flex items-center justify-between">

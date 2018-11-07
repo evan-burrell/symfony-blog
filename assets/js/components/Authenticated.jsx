@@ -1,15 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-export default function AuthNavbar({ username }) {
+export default function Authenticated({ username }) {
   return (
-    <div className="flex px-8 justify-between">
-      <div className="flex">
-        <a className="no-underline text-blue-darker hover:underline" href="/">
-          Home
-        </a>
-      </div>
-
       <div className="flex">
         Welcome, {username}
         <a className="no-underline text-blue-darker ml-4 hover:underline" href="/post/new">
@@ -19,10 +12,9 @@ export default function AuthNavbar({ username }) {
           Logout
         </a>
       </div>
-    </div>
   );
 }
 
-AuthNavbar.propTypes = {
+Authenticated.propTypes = {
   username: PropTypes.string
 }

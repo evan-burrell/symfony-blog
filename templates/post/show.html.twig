@@ -3,8 +3,8 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block body %}
-<div class="text-blue-darker text-3xl">{{ post.title }}</div>
-<div class="text-xs text-grey-darker mt-4">{{ post.username }}</div>
+<div class="text-blue-darker text-3xl inline">{{ post.title }}</div>
+<div class="text-xs text-grey-darker mt-4 ">by {{ post.username }}</div>
 <div class="py-16 leading-normal justify">{{ post.body }}</div>
 
 

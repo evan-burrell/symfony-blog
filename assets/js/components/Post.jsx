@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 export default function Posts(props) {
   return (
@@ -11,7 +12,13 @@ export default function Posts(props) {
           {props.title}
         </a>
       </div>
-      <div className="text-grey-darker mt-4 text-sm">{props.email}</div>
+      <div className="text-grey-darker mt-4 text-sm">by {props.username}</div>
     </div>
   );
+}
+
+Posts.propTypes = {
+  username: PropTypes.string,
+  slug: PropTypes.string,
+  title: PropTypes.string
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-export default function AuthNavbar(props) {
+export default function AuthNavbar({ username }) {
   return (
     <div className="flex px-8 justify-between">
       <div className="flex">
@@ -11,7 +11,7 @@ export default function AuthNavbar(props) {
       </div>
 
       <div className="flex">
-        Welcome, {props.username}
+        Welcome, {username}
         <a className="no-underline text-blue-darker ml-4 hover:underline" href="/post/new">
           Create Post
         </a>

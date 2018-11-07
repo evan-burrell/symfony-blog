@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="text-blue-darker text-3xl">{{ post.title }}</div>
-<div class="text-xs text-grey-darker mt-4">{{ post.userId.username }}</div>
+<div class="text-xs text-grey-darker mt-4">{{ post.username }}</div>
 <div class="py-16 leading-normal justify">{{ post.body }}</div>
 
 
@@ -14,9 +14,9 @@
     {% if app.user %}
     <div class="mr-4">{{ include('comment/_delete_form.html.twig') }}</div>
     {% endif %}
-    <div class="italic inline mr-2">{{ comment.userId.username }} </div> said: "{{ comment.body }}"
+    <div class="italic inline mr-2">{{ comment.username }} </div> said: "{{ comment.body }}"
     {% if app.user %}
-    {% if app.user.username == comment.userId.username %}
+    {% if app.user.username == comment.username %}
     <a class="ml-4 no-underline text-grey-dark italic" href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
     {% endif %}
     {% endif %}

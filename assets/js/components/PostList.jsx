@@ -14,7 +14,7 @@ export default function PostList() {
 
   return posts ? (
     posts.map((post, i) => (
-      <Post key={i} slug={post[0].slug} title={post[0].title} email={post.email} />
+      <Post key={i} slug={post.slug} title={post.title} email={post.username} />
     ))
   ) : (
     <div>

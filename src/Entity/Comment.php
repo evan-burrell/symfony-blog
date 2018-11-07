@@ -17,12 +17,6 @@ class Comment
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $userId;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Post", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -33,43 +27,48 @@ class Comment
      */
     private $body;
 
-    public function getId(): ?int
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $username;
+
+    public function getId() : ? int
     {
         return $this->id;
     }
 
-    public function getUserId(): ?User
-    {
-        return $this->userId;
-    }
-
-    public function setUserId(?User $userId): self
-    {
-        $this->userId = $userId;
-
-        return $this;
-    }
-
-    public function getPostId(): ?Post
+    public function getPostId() : ? Post
     {
         return $this->postId;
     }
 
-    public function setPostId(?Post $postId): self
+    public function setPostId(? Post $postId) : self
     {
         $this->postId = $postId;
 
         return $this;
     }
 
-    public function getBody(): ?string
+    public function getBody() : ? string
     {
         return $this->body;
     }
 
-    public function setBody(string $body): self
+    public function setBody(string $body) : self
     {
         $this->body = $body;
+
+        return $this;
+    }
+
+    public function getUsername() : ? string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username) : self
+    {
+        $this->username = $username;
 
         return $this;
     }

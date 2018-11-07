@@ -48,7 +48,7 @@ class PostController extends AbstractController
             // Set userId and slugify title
             $formData = $form
                 ->getData()
-                ->setUserId($this->getUser())
+                ->setUsername($this->getUser()->getUsername())
                 ->setSlug($slugify->slugify($form->getData()->getTitle() . '-' . $date->isoFormat('SSS')));
 
             // Flash message for created

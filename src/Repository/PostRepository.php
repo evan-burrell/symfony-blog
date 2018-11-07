@@ -20,11 +20,10 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    public function getPostsWithEmail()
+    public function getPostsWithUsername()
     {
         return $this->createQueryBuilder('p')
-        ->join('p.userId', 'u')
-        ->addSelect('p', 'u.email')
+        ->select('p')
         ->getQuery()
         ->getResult(Query::HYDRATE_ARRAY);
     }

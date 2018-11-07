@@ -15,7 +15,7 @@ export default function AuthNavbar(props) {
         <a className="no-underline text-blue-darker ml-4 hover:underline" href="/post/new">
           Create Post
         </a>
-        <a className="no-underline text-blue-darker ml-4 hover:underline" href="/logout">
+        <a className="no-underline text-blue-darker ml-4 hover:underline" href="/auth0/logout">
           Logout
         </a>
       </div>

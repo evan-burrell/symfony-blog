@@ -13,10 +13,6 @@ describe('<NoAuthNavbar />', () => {
     expect(wrapper.text()).toContain('Home');
   });
 
-  it('renders register in <NoAuthNavar />', () => {
-    expect(wrapper.text()).toContain('Register');
-  });
-
   it('renders login in <NoAuthNavar />', () => {
     expect(wrapper.text()).toContain('Login');
   });

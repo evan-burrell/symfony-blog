@@ -9,11 +9,8 @@ export default function NoAuthNavbar() {
         </a>
       </div>
       <div>
-        <a className="no-underline hover:underline text-blue-darker ml-4" href="/login">
+        <a className="no-underline hover:underline text-blue-darker ml-4" href="/connect/auth0">
           Login
-        </a>
-        <a className="no-underline hover:underline text-blue-darker ml-4" href="/register">
-          Register
         </a>
       </div>
     </div>

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Entity\Comment;
 use App\Form\CommentType;
+use App\Factory\CommentFactory;
 use App\Repository\CommentRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +17,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  */
 class CommentController extends AbstractController
 {
+    private $commentFactory;
+
+    public function __construct(CommentFactory $commentFactory)
+    {
+        $this->commentFactory = $commentFactory;
+    }
+
     /**
      * @Route("/new", name="comment_new", methods="GET|POST")
      */
@@ -23,7 +31,7 @@ class CommentController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $comment = new Comment();
+        $comment = $this->commentFactory->create();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 

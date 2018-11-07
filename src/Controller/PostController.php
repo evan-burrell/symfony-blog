@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use App\Entity\Post;
 use App\Form\PostType;
 use Cocur\Slugify\Slugify;
+use App\Factory\PostFactory;
+use App\Factory\SlugFactory;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +21,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  */
 class PostController extends AbstractController
 {
+    private $postFactory;
+    private $slugFactory;
+
+    public function __construct(PostFactory $postFactory, SlugFactory $slugFactory)
+    {
+        $this->postFactory = $postFactory;
+        $this->slugFactory = $slugFactory;
+    }
+
     /**
      * @Route("/new", name="post_new", methods="GET|POST")
      */
@@ -26,8 +37,8 @@ class PostController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $post = new Post();
-        $slugify = new Slugify();
+        $post = $this->postFactory->create();
+        $slugify = $this->slugFactory->create();
         $form = $this->createForm(PostType::class, $post);
         $date = Carbon::parse(Carbon::now());
 

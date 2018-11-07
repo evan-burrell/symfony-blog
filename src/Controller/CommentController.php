@@ -96,6 +96,6 @@ class CommentController extends AbstractController
             $em->flush();
         }
 
-        return $this->redirectToRoute('post_show', ['id' => $comment->getPostId()->getId()]);
+        return $this->redirectToRoute('post_show', ['slug' => $comment->getPostId()->getSlug()]);
     }
 }

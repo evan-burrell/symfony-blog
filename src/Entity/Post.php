@@ -53,18 +53,6 @@ class Post
         return $this->id;
     }
 
-    public function getUserId(): ?User
-    {
-        return $this->userId;
-    }
-
-    public function setUserId(?User $userId): self
-    {
-        $this->userId = $userId;
-
-        return $this;
-    }
-
     public function getTitle(): ?string
     {
         return $this->title;

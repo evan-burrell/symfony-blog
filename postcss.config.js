@@ -10,7 +10,7 @@ module.exports = {
       preset: 'default',
     }),
     purgecss({
-      content: ['./templates/**/*.twig', './templates/**/**/*.twig', './assets/js/*.js', './assets/js/**/*.jsx' ]
+      content: ['./templates/**/*.twig', './templates/**/**/*.twig', './assets/js/*.js', './assets/js/**/*.jsx', './src/Form/*.php' ]
     }),
     autoprefixer
   ]

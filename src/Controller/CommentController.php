@@ -28,6 +28,7 @@ class CommentController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Get the postId
             $post = $this->getDoctrine()->getRepository('App:Post')->findOneBy(array('id' => $request->query->get('id')));
             $formData = $form->getData()->setUserId($this->getUser())->setPostId($post);
 

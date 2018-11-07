@@ -34,11 +34,13 @@ class PostController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            // Set userId and slugify title
             $formData = $form
                 ->getData()
                 ->setUserId($this->getUser())
                 ->setSlug($slugify->slugify($form->getData()->getTitle() . '-' . $date->isoFormat('SSS')));
 
+            // Flash message for created
             $this->addFlash(
                 'notice',
                 'Post created'

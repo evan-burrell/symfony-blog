@@ -16,5 +16,5 @@ osx-link:
 	brew link --force --overwrite $(shell grep -Eo 'amp-php.{0,4}' Brewfile | head -1) | head -1
 
 test:
-	vendor/bin/phpunit
-	npx jest
+	composer test
+	yarn test

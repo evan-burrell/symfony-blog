@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Psr\Log\LoggerInterface;
 
 /**
  * @Route("/comment")
@@ -18,10 +19,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CommentController extends AbstractController
 {
     private $commentFactory;
+    private $logger;
 
-    public function __construct(CommentFactory $commentFactory)
+    public function __construct(CommentFactory $commentFactory, LoggerInterface $logger)
     {
         $this->commentFactory = $commentFactory;
+        $this->logger = $logger;
     }
 
     /**
@@ -39,6 +42,8 @@ class CommentController extends AbstractController
             // Get the postId
             $post = $this->getDoctrine()->getRepository('App:Post')->findOneBy(array('id' => $request->query->get('id')));
             $formData = $form->getData()->setUsername($this->getUser()->getUsername())->setPostId($post);
+
+            $this->logger->info('Comment created...');
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($formData);

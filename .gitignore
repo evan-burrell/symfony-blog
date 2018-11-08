@@ -26,3 +26,5 @@ yarn-error.log
 ###> phpunit/phpunit ###
 /phpunit.xml
 ###< phpunit/phpunit ###
+.idea/
+.vscode/

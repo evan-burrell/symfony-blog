@@ -7,7 +7,7 @@ export default function PostList() {
   const [posts, setPosts] = useState([]);
 
   useEffect(async () => {
-    const url = 'http://symfony-blog.ampdev.co/api/posts';
+    const url = 'https://symfony-blog.ampdev.co/api/posts';
     const response = await axios.get(url);
     setPosts(response.data);
   }, []);

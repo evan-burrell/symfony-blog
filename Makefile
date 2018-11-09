@@ -4,7 +4,8 @@ osx-local:
 	@echo "\033[92mConfigure /etc/hosts\033[0m";
 	if ! grep -q "127.0.0.1 symfony-blog.ampdev.co" "/etc/hosts"; then echo "127.0.0.1 symfony-blog.ampdev.co" | sudo tee -a /etc/hosts; fi;
 	make osx-link
-	cp symfony-blog.conf /usr/local/etc/httpd/vhosts/
+	cp symfony-blog80.conf /usr/local/etc/httpd/vhosts/
+	cp symfony-blog443.conf /usr/local/etc/httpd/vhosts/
 	sudo apachectl restart
 	docker-compose --file=./docker-compose.yml up -d;
 
